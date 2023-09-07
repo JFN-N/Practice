@@ -22,5 +22,11 @@ var_dump($f === 0.3);
 //
 echo "\n";
 echo "0.1+0.2 と 0.3 を高精度のprintfで表示\n";
-printf("0.1+0.2: %.2f \n", $f);
-printf("    0.3: %.2f \n", 0.3);
+printf("0.1+0.2: %.1f \n", $f);
+printf("    0.3: %.1f \n", 0.3);
+
+// 精度6桁での正しい比較
+echo "\n";
+echo "0.1+0.2 と 0.3 の現実的な比較\n";
+define('FLOAT_PRECISION', 0.000001); // 精度はあちこちで使うことが予想されるので定数にする
+var_dump( abs($f - 0.3) < FLOAT_PRECISION );
